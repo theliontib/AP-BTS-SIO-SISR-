@@ -86,7 +86,7 @@ Choisir **Windows Server 2022 Standard (Desktop Experience)** afin de disposer d
 
 Partitionner le disque virtuel de 20 Go et exécuter l'assistant d'installation.
 
-![Partitionnement du disque virtuel](images/image3.png)
+![Partitionnement du disque virtuel](images/image3.jpg)
 
 ### Définition du mot de passe Administrateur local
 
@@ -163,7 +163,7 @@ Une fois le rôle installé, une notification dans le Gestionnaire de serveur in
 
 Après finalisation de l'assistant, le serveur redémarre automatiquement pour appliquer les modifications d'annuaire.
 
-![Redémarrage après la promotion](images/image9.png)
+![Redémarrage après la promotion](images/image9.jpg)
 
 ---
 
@@ -252,7 +252,7 @@ Effectuer un `ping 192.168.10.10` depuis le client pour valider la communication
 
 Au redémarrage du client, l'option **Autre utilisateur** permet de s'authentifier avec le compte domaine d'un employé, par exemple : `TECHNOLAB\amartin`.
 
-![Connexion avec un compte domaine](images/image13.png)
+![Connexion avec un compte domaine](images/image13.jpg)
 
 ![Changement de mot de passe à la première connexion](images/image14.png)
 

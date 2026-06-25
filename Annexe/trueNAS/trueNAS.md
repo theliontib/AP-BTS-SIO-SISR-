@@ -380,7 +380,7 @@ systemctl restart midclt
 # Ou simplement redémarrer la VM
 ```
 
-![Autres solutions pour le mappage](images/image24.png)
+![Autres solutions pour le mappage](images/image24.jpg)
 
 ### Problème 2 : Le NAS est visible mais inaccessible
 

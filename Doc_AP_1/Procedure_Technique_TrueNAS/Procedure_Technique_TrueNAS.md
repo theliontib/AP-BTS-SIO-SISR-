@@ -257,7 +257,7 @@ gpupdate /force
 
 ![Correction GPO — onglet Commun](images/image23.png)
 
-![Solutions supplémentaires](images/image24.png)
+![Solutions supplémentaires](images/image24.jpg)
 
 ### Problème 2 : NAS visible mais inaccessible
 
