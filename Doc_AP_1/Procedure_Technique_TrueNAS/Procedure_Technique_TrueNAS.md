@@ -105,7 +105,7 @@ Ouvrir un navigateur sur le poste Windows :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS — connexion](images/image10.png)
+![Interface web TrueNAS — connexion](images/image10.jpg)
 
 ---
 
@@ -233,11 +233,11 @@ Win+R → gpmc.msc → Entrée
 
 4. **Commun** → ✅ **Exécuter dans le contexte de sécurité de l'utilisateur connecté**
 
-![Configuration GPO mappage lecteur](images/image20.png)
+![Configuration GPO mappage lecteur](images/image20.jpg)
 
-![Paramètres avancés de la GPO](images/image21.png)
+![Paramètres avancés de la GPO](images/image21.jpg)
 
-![Propriétés du lecteur Z:](images/image22.png)
+![Propriétés du lecteur Z:](images/image22.jpg)
 
 ### Application
 

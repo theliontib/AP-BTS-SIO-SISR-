@@ -242,7 +242,7 @@ Effectuer un `ping 192.168.10.10` depuis le client pour valider la communication
 6. Un message de bienvenue confirme la réussite
 7. **Redémarrer** le poste
 
-![Message de bienvenue confirmant la jonction au domaine](images/image12.png)
+![Message de bienvenue confirmant la jonction au domaine](images/image12.jpg)
 
 ---
 

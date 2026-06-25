@@ -241,7 +241,7 @@ http://192.168.10.30
 | Mot de passe | `Serveur2022` |
 | Champ identifiant | `samaccountname` |
 
-![Configuration de l'annuaire LDAP dans GLPI](images/image6.png)
+![Configuration de l'annuaire LDAP dans GLPI](images/image6.jpg)
 
 ### Test de la connexion
 
@@ -261,7 +261,7 @@ Cliquer sur **Test de connexion** dans le menu de gauche pour valider que GLPI c
 6. Sélectionner les utilisateurs dans la liste
 7. Cliquer sur **Actions** → **Importer**
 
-![Importation des utilisateurs depuis l'Active Directory](images/image8.png)
+![Importation des utilisateurs depuis l'Active Directory](images/image8.jpg)
 
 ![Sélection et import des utilisateurs AD](images/image9.png)
 

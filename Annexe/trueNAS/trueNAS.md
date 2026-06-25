@@ -127,7 +127,7 @@ Depuis le serveur Windows, ouvrir un navigateur et accéder à :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS — tableau de bord](images/image10.png)
+![Interface web TrueNAS — tableau de bord](images/image10.jpg)
 
 ---
 
@@ -312,11 +312,11 @@ Pour que le lecteur réseau se monte **automatiquement** au moment de la connexi
 | Lettre de lecteur | `Z:` |
 | Libellé | `Partage TrueNAS` |
 
-![Configuration du mappage de lecteur via GPO](images/image20.png)
+![Configuration du mappage de lecteur via GPO](images/image20.jpg)
 
-![Paramètres avancés du lecteur mappé](images/image21.png)
+![Paramètres avancés du lecteur mappé](images/image21.jpg)
 
-![Propriétés du lecteur Z:](images/image22.png)
+![Propriétés du lecteur Z:](images/image22.jpg)
 
 ### Application sur les postes clients
 
