@@ -35,7 +35,7 @@ Depuis la console **Utilisateurs et ordinateurs Active Directory** :
 | `G_Compta` | Service comptable |
 | `G_IT` | Service informatique |
 
-![Création des groupes de sécurité](images/image1.png)
+![Création des groupes de sécurité](images/image1.jpg)
 
 ### Création des utilisateurs
 
@@ -125,7 +125,7 @@ Au lieu d'appliquer sur le domaine, **lier la GPO à l'OU spécifique** pour cib
 3. Activer **Interdire l'accès au Panneau de configuration**
 4. **Lier la GPO** à l'OU `Direction`
 
-![GPO restriction — Panneau de configuration désactivé pour la Direction](images/image5.png)
+![GPO restriction — Panneau de configuration désactivé pour la Direction](images/image5.jpg)
 
 ### Service Comptabilité — Blocage de cmd.exe
 
@@ -153,7 +153,7 @@ Les membres du service informatique doivent avoir des droits d'administration su
 3. Double-cliquer sur le groupe **Administrateurs du domaine** (`Domain Admins`)
 4. Onglet **Membres** → **Ajouter** → sélectionner `G_IT`
 
-![Ajout de G_IT au groupe Domain Admins](images/image6.png)
+![Ajout de G_IT au groupe Domain Admins](images/image6.jpg)
 
 ---
 

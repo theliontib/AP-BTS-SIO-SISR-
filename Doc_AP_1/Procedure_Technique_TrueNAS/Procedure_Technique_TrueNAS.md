@@ -41,11 +41,11 @@ Ce document détaille la procédure technique d'installation et de configuration
 2. Modifier les paramètres de la VM pour ajouter un second disque de 50 Go
 3. Lancer la VM sur l'ISO TrueNAS
 
-![Démarrage sur l'ISO TrueNAS](images/image1.png)
+![Démarrage sur l'ISO TrueNAS](images/image13.png)
 
-![Configuration de la VM TrueNAS](images/image2.png)
+![Configuration de la VM TrueNAS](images/image22.jpg)
 
-![Ajout du disque de stockage de 50 Go](images/image3.png)
+![Ajout du disque de stockage de 50 Go](images/image3.jpg)
 
 ![Paramètres avancés de la VM](images/image4.png)
 
@@ -105,7 +105,7 @@ Ouvrir un navigateur sur le poste Windows :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS — connexion](images/image10.jpg)
+![Interface web TrueNAS — connexion](images/image10.png)
 
 ---
 
@@ -257,7 +257,7 @@ gpupdate /force
 
 ![Correction GPO — onglet Commun](images/image23.png)
 
-![Solutions supplémentaires](images/image24.jpg)
+![Solutions supplémentaires](images/image24.png)
 
 ### Problème 2 : NAS visible mais inaccessible
 

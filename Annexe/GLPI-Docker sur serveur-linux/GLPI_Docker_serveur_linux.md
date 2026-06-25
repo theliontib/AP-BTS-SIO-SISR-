@@ -50,7 +50,7 @@ Lors de l'étape **Filesystem Summary**, vérifier que l'espace alloué est bien
 
 > **Attention :** Utiliser la touche **Verrouillage Maj (Lock Maj)** et non **Shift** pour éviter les erreurs de mot de passe.
 
-![Création du profil administrateur lors de l'installation d'Ubuntu Server](images/image1.png)
+![Création du profil administrateur lors de l'installation d'Ubuntu Server](images/image10.jpg)
 
 ### Finalisation de l'installation
 
@@ -241,7 +241,7 @@ http://192.168.10.30
 | Mot de passe | `Serveur2022` |
 | Champ identifiant | `samaccountname` |
 
-![Configuration de l'annuaire LDAP dans GLPI](images/image6.jpg)
+![Configuration de l'annuaire LDAP dans GLPI](images/image6.png)
 
 ### Test de la connexion
 
@@ -261,7 +261,7 @@ Cliquer sur **Test de connexion** dans le menu de gauche pour valider que GLPI c
 6. Sélectionner les utilisateurs dans la liste
 7. Cliquer sur **Actions** → **Importer**
 
-![Importation des utilisateurs depuis l'Active Directory](images/image8.jpg)
+![Importation des utilisateurs depuis l'Active Directory](images/image8.png)
 
 ![Sélection et import des utilisateurs AD](images/image9.png)
 
@@ -304,7 +304,7 @@ Appliquer la configuration :
 sudo netplan apply
 ```
 
-![Configuration du fichier Netplan](images/image10.png)
+![Configuration du fichier Netplan](images/image10.jpg)
 
 Vider le cache DNS :
 

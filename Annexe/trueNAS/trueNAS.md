@@ -54,11 +54,11 @@
 2. Une fois la VM créée, **modifier ses paramètres**
 3. **Ajouter un second disque de 50 Go** qui servira au stockage des données
 
-![Démarrage sur l'ISO TrueNAS](images/image1.png)
+![Démarrage sur l'ISO TrueNAS](images/image13.png)
 
-![Configuration matérielle de la VM TrueNAS](images/image2.png)
+![Configuration matérielle de la VM TrueNAS](images/image22.jpg)
 
-![Ajout du second disque de stockage de 50 Go](images/image3.png)
+![Ajout du second disque de stockage de 50 Go](images/image3.jpg)
 
 ![Paramètres avancés de la VM](images/image4.png)
 
@@ -127,7 +127,7 @@ Depuis le serveur Windows, ouvrir un navigateur et accéder à :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS — tableau de bord](images/image10.jpg)
+![Interface web TrueNAS — tableau de bord](images/image10.png)
 
 ---
 
@@ -380,7 +380,7 @@ systemctl restart midclt
 # Ou simplement redémarrer la VM
 ```
 
-![Autres solutions pour le mappage](images/image24.jpg)
+![Autres solutions pour le mappage](images/image24.png)
 
 ### Problème 2 : Le NAS est visible mais inaccessible
 

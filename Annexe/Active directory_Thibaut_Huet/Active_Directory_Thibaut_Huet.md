@@ -66,7 +66,7 @@ Deux machines virtuelles distinctes ont été créées :
 | Espace disque | 20 Go | 20 Go ou plus |
 | Type de réseau | NAT | NAT (identique au serveur) |
 
-![Création et paramétrage de la VM serveur SRV-AD](images/image1.png)
+![Création et paramétrage de la VM serveur SRV-AD](images/image12.jpg)
 
 ---
 
@@ -254,7 +254,7 @@ Au redémarrage du client, l'option **Autre utilisateur** permet de s'authentifi
 
 ![Connexion avec un compte domaine](images/image13.jpg)
 
-![Changement de mot de passe à la première connexion](images/image14.png)
+![Changement de mot de passe à la première connexion](images/image14.jpg)
 
 ### Commandes de validation
 
