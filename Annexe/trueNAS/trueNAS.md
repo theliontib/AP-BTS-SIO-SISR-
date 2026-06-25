@@ -54,9 +54,13 @@
 2. Une fois la VM créée, **modifier ses paramètres**
 3. **Ajouter un second disque de 50 Go** qui servira au stockage des données
 
-![Création de la VM TrueNAS](images/image1.png)
+![Démarrage sur l'ISO TrueNAS](images/image1.png)
 
-![Ajout du second disque de stockage](images/image2.png)
+![Configuration matérielle de la VM TrueNAS](images/image2.png)
+
+![Ajout du second disque de stockage de 50 Go](images/image3.png)
+
+![Paramètres avancés de la VM](images/image4.png)
 
 ---
 
@@ -76,13 +80,15 @@
 
 > **Note :** Le mot de passe `Serveur@)@@` correspond à `Serveur2022` saisi en azerty mais interprété en qwerty.
 
+![Configuration du compte administrateur TrueNAS](images/image5.png)
+
+![Assistant d'installation — sélection du disque](images/image6.png)
+
 5. **EFI :** Yes
 6. Terminer l'installation
 7. **Reboot System**
 
-![Installation de TrueNAS](images/image3.png)
-
-![Redémarrage après installation](images/image4.png)
+![Redémarrage après installation](images/image7.png)
 
 ---
 
@@ -109,7 +115,9 @@ Aller dans **Option 2** → **Configure network settings**
 | IPv4 Gateway | `192.168.10.1` |
 | Name Server 1 | `192.168.10.10` |
 
-![Configuration réseau — console](images/image5.png)
+![Configuration de l'interface réseau ens33](images/image8.png)
+
+![Configuration des paramètres réseau globaux](images/image9.png)
 
 ### Accès à l'interface web
 
@@ -119,7 +127,7 @@ Depuis le serveur Windows, ouvrir un navigateur et accéder à :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS](images/image6.png)
+![Interface web TrueNAS — tableau de bord](images/image10.png)
 
 ---
 
@@ -146,8 +154,6 @@ echo "server 192.168.10.10 iburst prefer" >> /etc/chrony.conf
 systemctl restart chronyd
 ```
 
-![Configuration NTP](images/image7.png)
-
 ---
 
 ## 6. Création du pool de stockage ZFS
@@ -169,9 +175,11 @@ systemctl restart chronyd
 3. Cliquer sur **Créer le volume**
 4. Confirmer l'opération
 
-![Création du pool ZFS](images/image8.png)
+![Création du pool de stockage ZFS](images/image11.png)
 
-![Confirmation du pool](images/image9.png)
+![Configuration du pool datapool](images/image12.png)
+
+![Confirmation de la création du pool](images/image13.png)
 
 ---
 
@@ -191,7 +199,7 @@ Pour que les clients du domaine puissent résoudre le nom `truenas.technolab.loc
 
 5. Cliquer sur **Ajouter un hôte** (ignorer l'avertissement PTR)
 
-![Ajout de l'enregistrement DNS](images/image10.png)
+![Ajout de l'enregistrement DNS pour TrueNAS](images/image14.png)
 
 ---
 
@@ -217,9 +225,9 @@ Pour que les clients du domaine puissent résoudre le nom `truenas.technolab.loc
 3. Cliquer sur **Sauvegarder**
 4. Attendre la jonction au domaine
 
-![Configuration AD dans TrueNAS](images/image11.png)
+![Configuration Active Directory dans TrueNAS](images/image15.png)
 
-![Jonction au domaine réussie](images/image12.png)
+![Jonction au domaine réussie](images/image16.png)
 
 ---
 
@@ -230,6 +238,10 @@ Pour que les clients du domaine puissent résoudre le nom `truenas.technolab.loc
 1. Aller dans **Storage** → cliquer sur `datapool`
 2. Cliquer sur **Créer dataset**
 3. Nom du dataset : `partage`
+
+![Création du partage SMB — paramètres généraux](images/image17.png)
+
+![Configuration du nom et de la description du partage](images/image18.png)
 
 ### Configuration du partage SMB
 
@@ -243,8 +255,6 @@ Pour que les clients du domaine puissent résoudre le nom `truenas.technolab.loc
 | Activé | ✅ Coché |
 
 2. **Enregistrer**
-
-![Création du partage SMB](images/image13.png)
 
 ---
 
@@ -265,7 +275,7 @@ Après la création du partage, configurer les permissions d'accès via l'édite
 
 3. **Sauvegarder ACL**
 
-![Configuration des ACL](images/image14.png)
+![Configuration des ACL du partage](images/image19.png)
 
 ### Accès depuis Windows
 
@@ -302,7 +312,11 @@ Pour que le lecteur réseau se monte **automatiquement** au moment de la connexi
 | Lettre de lecteur | `Z:` |
 | Libellé | `Partage TrueNAS` |
 
-![Configuration du lecteur mappé](images/image15.png)
+![Configuration du mappage de lecteur via GPO](images/image20.png)
+
+![Paramètres avancés du lecteur mappé](images/image21.png)
+
+![Propriétés du lecteur Z:](images/image22.png)
 
 ### Application sur les postes clients
 
@@ -349,6 +363,8 @@ ping truenas         # Test de résolution DNS
 3. Cocher **Exécuter dans le contexte de sécurité de l'utilisateur connecté (option de stratégie utilisateur)**
 4. **Appliquer** → **OK**
 
+![Correction — onglet Commun de la GPO](images/image23.png)
+
 **Solution 2 :** Passer l'action en *Mettre à jour*
 
 Si le lecteur Z: existe déjà suite à une tentative échouée, l'action *Créer* échoue.
@@ -363,6 +379,8 @@ Si le lecteur Z: existe déjà suite à une tentative échouée, l'action *Crée
 systemctl restart midclt
 # Ou simplement redémarrer la VM
 ```
+
+![Autres solutions pour le mappage](images/image24.png)
 
 ### Problème 2 : Le NAS est visible mais inaccessible
 
@@ -379,6 +397,7 @@ systemctl restart midclt
 ## 14. Conclusion
 
 TrueNAS est désormais pleinement intégré à l'infrastructure TechnoLab :
+
 - **Stockage centralisé** via un pool ZFS performant
 - **Authentification AD** pour une gestion unifiée des accès
 - **Partage SMB** accessible depuis tous les postes du domaine

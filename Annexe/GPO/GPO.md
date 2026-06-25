@@ -54,8 +54,6 @@ Clic droit sur le domaine → **Nouveau** → **Utilisateur**
 | Rico | Gepeto | `grico` | `Azerty01*` | G_IT |
 | Goujon | Homme | `hgoujon` | `Azerty01*` | G_IT |
 
-![Création des utilisateurs](images/image2.png)
-
 ### Attribution des utilisateurs aux groupes
 
 1. Cliquer sur le groupe concerné
@@ -75,7 +73,11 @@ Clic droit sur le domaine → **Nouveau** → **Utilisateur**
 
 3. Nommer la GPO : `Politique-MotsDePasse`
 
-![Création de la GPO Politique-MotsDePasse](images/image3.png)
+![Création de la GPO Politique-MotsDePasse](images/image2.png)
+
+![Configuration des paramètres de mot de passe](images/image3.png)
+
+![Paramètres de la politique de mot de passe](images/image4.png)
 
 ### Configuration de la politique
 
@@ -108,6 +110,23 @@ Pour que les utilisateurs changent leur mot de passe à la prochaine connexion :
 
 Au lieu d'appliquer sur le domaine, **lier la GPO à l'OU spécifique** pour cibler uniquement le service concerné.
 
+### Service Direction — Blocage du Panneau de configuration
+
+| Paramètre | Valeur |
+|---|---|
+| OU cible | `Direction` |
+| GPO | `Restriction-Direction` |
+| Restriction | Interdire l'accès au Panneau de configuration |
+
+**Configuration :**
+
+1. Créer une nouvelle GPO nommée `Restriction-Direction`
+2. **Modifier** → `Configuration utilisateur` → `Stratégies` → `Modèles d'administration` → `Panneau de configuration`
+3. Activer **Interdire l'accès au Panneau de configuration**
+4. **Lier la GPO** à l'OU `Direction`
+
+![GPO restriction — Panneau de configuration désactivé pour la Direction](images/image5.png)
+
 ### Service Comptabilité — Blocage de cmd.exe
 
 | Paramètre | Valeur |
@@ -123,8 +142,6 @@ Au lieu d'appliquer sur le domaine, **lier la GPO à l'OU spécifique** pour cib
 3. Activer **Empêcher l'accès à l'invite de commandes**
 4. **Lier la GPO** à l'OU `Comptabilite` (pas au domaine !)
 
-![GPO restriction comptabilité](images/image4.png)
-
 ### Service Informatique — Droits d'administration
 
 Les membres du service informatique doivent avoir des droits d'administration sur les postes du domaine.
@@ -136,20 +153,7 @@ Les membres du service informatique doivent avoir des droits d'administration su
 3. Double-cliquer sur le groupe **Administrateurs du domaine** (`Domain Admins`)
 4. Onglet **Membres** → **Ajouter** → sélectionner `G_IT`
 
-### Service Direction — Blocage du Panneau de configuration
-
-| Paramètre | Valeur |
-|---|---|
-| OU cible | `Direction` |
-| GPO | `Restriction-Direction` |
-| Restriction | Interdire l'accès au Panneau de configuration |
-
-**Configuration :**
-
-1. Créer une nouvelle GPO nommée `Restriction-Direction`
-2. **Modifier** → `Configuration utilisateur` → `Stratégies` → `Modèles d'administration` → `Panneau de configuration`
-3. Activer **Interdire l'accès au Panneau de configuration**
-4. **Lier la GPO** à l'OU `Direction`
+![Ajout de G_IT au groupe Domain Admins](images/image6.png)
 
 ---
 
@@ -192,8 +196,6 @@ gpresult /r
 ```
 
 Cette commande affiche l'ensemble des GPO appliquées à l'utilisateur et à l'ordinateur, ainsi que leur ordre de priorité.
-
-![Vérification avec gpresult](images/image5.png)
 
 ### Ordre de priorité
 

@@ -41,8 +41,6 @@ Lors de l'étape **Filesystem Summary**, vérifier que l'espace alloué est bien
 - Aller sur **ubuntu-lv** > **Edit** > Changer pour la valeur maximale (ex : `18.222G` pour une VM de 20 Go)
 - **Save**
 
-![Configuration du partitionnement LVM](images/image1.png)
-
 ### Profils de configuration
 
 | Champ | Valeur |
@@ -52,13 +50,13 @@ Lors de l'étape **Filesystem Summary**, vérifier que l'espace alloué est bien
 
 > **Attention :** Utiliser la touche **Verrouillage Maj (Lock Maj)** et non **Shift** pour éviter les erreurs de mot de passe.
 
+![Création du profil administrateur lors de l'installation d'Ubuntu Server](images/image1.png)
+
 ### Finalisation de l'installation
 
-1. Terminer l'installation
+1. Terminer l'installation et redémarrer
 2. Au message `Please remove the installation medium, then press ENTER` → appuyer sur **Entrée** (VMware démonte l'ISO automatiquement)
 3. Se connecter avec : `administrateur` / `Serveur2022`
-
-![Première connexion au serveur Linux](images/image2.png)
 
 ---
 
@@ -80,8 +78,6 @@ Lors de l'installation, configurer le réseau en manuel :
 
 > **Note :** Le premier DNS (`192.168.10.10`) est l'IP du contrôleur de domaine Active Directory.
 
-![Configuration réseau manuelle](images/image3.png)
-
 ---
 
 ## 3. Installation de Docker
@@ -92,6 +88,8 @@ Depuis le serveur Windows, se connecter en SSH au serveur Ubuntu :
 ssh administrateur@192.168.10.30
 # Taper "yes" puis le mot de passe
 ```
+
+![Connexion SSH au serveur Ubuntu pour l'installation de Docker](images/image2.png)
 
 ### Mise à jour du système
 
@@ -143,8 +141,6 @@ Se déconnecter puis se reconnecter pour que les changements prennent effet. Vé
 docker ps
 ```
 
-![Installation de Docker](images/image4.png)
-
 ---
 
 ## 4. Déploiement de GLPI avec Docker Compose
@@ -191,7 +187,7 @@ volumes:
   mariadb_data:
 ```
 
-![Fichier docker-compose.yml](images/image5.png)
+![Fichier docker-compose.yml pour le déploiement de GLPI](images/image3.png)
 
 ### Lancement des conteneurs
 
@@ -199,7 +195,7 @@ volumes:
 docker compose up -d
 ```
 
-![Lancement des conteneurs Docker](images/image6.png)
+![Lancement des conteneurs Docker avec docker compose up -d](images/image4.png)
 
 ### Vérification
 
@@ -209,7 +205,7 @@ Sur le serveur Windows, ouvrir un navigateur et accéder à :
 http://192.168.10.30
 ```
 
-![Interface GLPI — page d'accueil](images/image7.png)
+![Interface GLPI accessible depuis le navigateur](images/image5.png)
 
 ---
 
@@ -221,8 +217,6 @@ http://192.168.10.30
    - **Mot de passe :** `glpi`
 3. Suivre l'assistant d'installation
 4. Configurer la base de données MySQL avec les paramètres définis dans `docker-compose.yml`
-
-![Configuration GLPI — base de données](images/image8.png)
 
 ---
 
@@ -247,13 +241,13 @@ http://192.168.10.30
 | Mot de passe | `Serveur2022` |
 | Champ identifiant | `samaccountname` |
 
-![Configuration LDAP dans GLPI](images/image9.png)
+![Configuration de l'annuaire LDAP dans GLPI](images/image6.png)
 
 ### Test de la connexion
 
 Cliquer sur **Test de connexion** dans le menu de gauche pour valider que GLPI communique bien avec l'Active Directory.
 
-![Test de connexion LDAP](images/image10.png)
+![Test de connexion LDAP réussi](images/image7.png)
 
 ---
 
@@ -267,7 +261,9 @@ Cliquer sur **Test de connexion** dans le menu de gauche pour valider que GLPI c
 6. Sélectionner les utilisateurs dans la liste
 7. Cliquer sur **Actions** → **Importer**
 
-![Importation des utilisateurs AD](images/image11.png)
+![Importation des utilisateurs depuis l'Active Directory](images/image8.png)
+
+![Sélection et import des utilisateurs AD](images/image9.png)
 
 ---
 
@@ -308,6 +304,8 @@ Appliquer la configuration :
 sudo netplan apply
 ```
 
+![Configuration du fichier Netplan](images/image10.png)
+
 Vider le cache DNS :
 
 ```bash
@@ -319,6 +317,8 @@ sudo systemctl restart systemd-resolved
 ```bash
 ping technolab.local
 ```
+
+![Vérification de la résolution DNS du domaine](images/image11.png)
 
 ### Installation des outils d'intégration AD
 

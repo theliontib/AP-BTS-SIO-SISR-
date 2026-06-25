@@ -41,9 +41,13 @@ Ce document détaille la procédure technique d'installation et de configuration
 2. Modifier les paramètres de la VM pour ajouter un second disque de 50 Go
 3. Lancer la VM sur l'ISO TrueNAS
 
-![Création de la VM — paramètres généraux](images/image1.png)
+![Démarrage sur l'ISO TrueNAS](images/image1.png)
 
-![Ajout du second disque de stockage de 50 Go](images/image2.png)
+![Configuration de la VM TrueNAS](images/image2.png)
+
+![Ajout du disque de stockage de 50 Go](images/image3.png)
+
+![Paramètres avancés de la VM](images/image4.png)
 
 ---
 
@@ -67,9 +71,11 @@ Ce document détaille la procédure technique d'installation et de configuration
 
 > **Note :** `Serveur@)@@` correspond à `Serveur2022` saisi en azerty → qwerty.
 
-![Installation de TrueNAS](images/image3.png)
+![Configuration du compte administrateur](images/image5.png)
 
-![Menu de démarrage après installation](images/image4.png)
+![Assistant d'installation TrueNAS](images/image6.png)
+
+![Redémarrage après installation](images/image7.png)
 
 ---
 
@@ -87,7 +93,9 @@ Ce document détaille la procédure technique d'installation et de configuration
 | Gateway | `192.168.10.1` |
 | DNS | `192.168.10.10` |
 
-![Configuration réseau — paramètres IP](images/image5.png)
+![Configuration interface réseau](images/image8.png)
+
+![Paramètres réseau globaux](images/image9.png)
 
 ### Accès à l'interface web
 
@@ -97,7 +105,7 @@ Ouvrir un navigateur sur le poste Windows :
 http://192.168.10.40
 ```
 
-![Interface web TrueNAS — page de connexion](images/image6.png)
+![Interface web TrueNAS — connexion](images/image10.png)
 
 ---
 
@@ -114,8 +122,6 @@ echo "server 192.168.10.10 iburst prefer" >> /etc/chrony.conf
 systemctl restart chronyd
 ```
 
-![Configuration NTP — synchronisation horaire](images/image7.png)
-
 ---
 
 ## 5. Pool de stockage ZFS
@@ -128,9 +134,11 @@ systemctl restart chronyd
 4. Layout : **Stripe** → Disque de 50 Go
 5. Confirmer
 
-![Création du pool de stockage ZFS](images/image8.png)
+![Création du pool ZFS](images/image11.png)
 
-![Pool ZFS créé avec succès](images/image9.png)
+![Configuration du pool datapool](images/image12.png)
+
+![Confirmation de création](images/image13.png)
 
 ---
 
@@ -141,7 +149,7 @@ systemctl restart chronyd
 3. Clic droit → **Nouvel hôte (A)**
 4. Nom : `truenas` — IP : `192.168.10.40`
 
-![Création de l'enregistrement DNS pour TrueNAS](images/image10.png)
+![Ajout de l'enregistrement DNS](images/image14.png)
 
 ---
 
@@ -160,9 +168,9 @@ systemctl restart chronyd
 
 4. **Sauvegarder**
 
-![Configuration Active Directory dans TrueNAS](images/image11.png)
+![Configuration Active Directory](images/image15.png)
 
-![Jonction au domaine réussie](images/image12.png)
+![Jonction au domaine réussie](images/image16.png)
 
 ---
 
@@ -185,7 +193,9 @@ systemctl restart chronyd
 
 2. **Enregistrer**
 
-![Création du partage SMB](images/image13.png)
+![Création du partage SMB](images/image17.png)
+
+![Configuration du partage](images/image18.png)
 
 ### Configuration des ACL
 
@@ -197,7 +207,7 @@ systemctl restart chronyd
 | Permissions | Modifier |
 | Héritage | ✅ |
 
-![Configuration des ACL du partage](images/image14.png)
+![Configuration des ACL](images/image19.png)
 
 ---
 
@@ -223,7 +233,11 @@ Win+R → gpmc.msc → Entrée
 
 4. **Commun** → ✅ **Exécuter dans le contexte de sécurité de l'utilisateur connecté**
 
-![Configuration du mappage de lecteur via GPO](images/image15.png)
+![Configuration GPO mappage lecteur](images/image20.png)
+
+![Paramètres avancés de la GPO](images/image21.png)
+
+![Propriétés du lecteur Z:](images/image22.png)
 
 ### Application
 
@@ -240,6 +254,10 @@ gpupdate /force
 **Cause :** La GPO s'exécutait avec le compte SYSTEM au lieu du compte utilisateur.
 
 **Solution :** Cocher *Exécuter dans le contexte de sécurité de l'utilisateur connecté* dans l'onglet Commun de la GPO + passer l'Action en **Mettre à jour**.
+
+![Correction GPO — onglet Commun](images/image23.png)
+
+![Solutions supplémentaires](images/image24.png)
 
 ### Problème 2 : NAS visible mais inaccessible
 

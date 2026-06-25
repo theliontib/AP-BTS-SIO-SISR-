@@ -66,7 +66,7 @@ Deux machines virtuelles distinctes ont été créées :
 | Espace disque | 20 Go | 20 Go ou plus |
 | Type de réseau | NAT | NAT (identique au serveur) |
 
-![Création de la VM serveur](images/image1.png)
+![Création et paramétrage de la VM serveur SRV-AD](images/image1.png)
 
 ---
 
@@ -76,27 +76,23 @@ Deux machines virtuelles distinctes ont été créées :
 
 Amorcer la machine SRV-AD sur l'image ISO de Windows Server 2022.
 
-![Démarrage sur l'ISO Windows Server](images/image2.png)
-
 ### Sélection de la version
 
 Choisir **Windows Server 2022 Standard (Desktop Experience)** afin de disposer de l'interface graphique nécessaire à l'administration.
 
-![Sélection de la version](images/image3.png)
+![Sélection de la version Windows Server 2022](images/image2.png)
 
 ### Partitionnement
 
 Partitionner le disque virtuel de 20 Go et exécuter l'assistant d'installation.
 
-![Partitionnement du disque](images/image4.png)
+![Partitionnement du disque virtuel](images/image3.png)
 
 ### Définition du mot de passe Administrateur local
 
 Lors du premier démarrage, définir le mot de passe du compte Administrateur local :
 
 - **Mot de passe :** `Serveur2022`
-
-![Premier démarrage — mot de passe Administrateur](images/image5.png)
 
 ### Renommage du serveur
 
@@ -107,13 +103,11 @@ Pour respecter la nomenclature de l'arborescence cible, le serveur doit être re
 3. Modifier la valeur par **SRV-AD**
 4. Redémarrer la machine
 
-![Renommage du serveur en SRV-AD](images/image6.png)
-
 ---
 
 ## 4. Configuration IP statique
 
-Un contrôleur de domaine doit obligatoirement posséder une **configuration IP statique (fixe)** pour que les clients du réseau puissent le solliciter de manière fiable. Le serveur faisant également office de serveur DNS pour le domaine, son adresse de *DNS préféré* pointe sur lui-même.
+Un contrôleur de domaine doit obligatoirement posséder une **configuration IP statique (fixe)** pour que les clients du réseau puissent le solliciter de manière fiable. Le serveur faisant également office de serveur DNS pour le domaine, son adresse de DNS préféré pointe sur lui-même.
 
 ### Paramètres réseau appliqués
 
@@ -128,7 +122,7 @@ Un contrôleur de domaine doit obligatoirement posséder une **configuration IP 
 
 Exécuter `ipconfig /all` dans l'invite de commandes Windows pour valider la configuration.
 
-![Vérification avec ipconfig /all](images/image7.png)
+![Vérification de la configuration réseau avec ipconfig /all](images/image4.png)
 
 ---
 
@@ -142,9 +136,11 @@ Le déploiement des fonctionnalités Active Directory s'effectue depuis le **Ges
 4. Valider l'ajout des fonctionnalités requises de gestion
 5. Lancer l'installation
 
-![Ajout du rôle AD DS](images/image8.png)
+![Ajout du rôle Services de domaine Active Directory](images/image5.png)
 
-![Validation des fonctionnalités requises](images/image9.png)
+![Validation des fonctionnalités requises pour AD DS](images/image6.png)
+
+![Installation du rôle AD DS en cours](images/image7.png)
 
 ---
 
@@ -161,13 +157,13 @@ Une fois le rôle installé, une notification dans le Gestionnaire de serveur in
 | Niveau fonctionnel | Windows Server 2016 (ou supérieur) |
 | Mot de passe DSRM | Saisir un mot de passe sécurisé |
 
-![Promotion en contrôleur de domaine](images/image10.png)
+![Assistant de promotion en contrôleur de domaine](images/image8.png)
 
 ### Finalisation
 
 Après finalisation de l'assistant, le serveur redémarre automatiquement pour appliquer les modifications d'annuaire.
 
-![Redémarrage après promotion](images/image11.png)
+![Redémarrage après la promotion](images/image9.png)
 
 ---
 
@@ -187,8 +183,6 @@ technolab.local
 ```
 
 Chaque OU permettra d'appliquer des **GPO spécifiques** (restrictions d'accès, politiques de sécurité, fonds d'écran, etc.).
-
-![Création des unités d'organisation](images/image12.png)
 
 ---
 
@@ -216,13 +210,7 @@ Les comptes utilisateurs ont été créés avec des identifiants standardisés (
 
 > **Note :** Le mot de passe initial sera changé à la première connexion.
 
-### Attribution aux groupes
-
-1. Cliquer sur le groupe concerné
-2. Aller dans l'onglet **Membres**
-3. Ajouter les utilisateurs correspondants
-
-![Création des utilisateurs](images/image13.png)
+![Création des comptes utilisateurs dans l'Active Directory](images/image10.png)
 
 ---
 
@@ -242,7 +230,7 @@ La machine virtuelle CLIENT01 (Windows 10/11) doit être configurée sur le **m�
 
 Effectuer un `ping 192.168.10.10` depuis le client pour valider la communication réseau.
 
-![Test ping vers le serveur](images/image14.png)
+![Test ping entre le client et le serveur](images/image11.png)
 
 ### Jonction au domaine
 
@@ -254,7 +242,7 @@ Effectuer un `ping 192.168.10.10` depuis le client pour valider la communication
 6. Un message de bienvenue confirme la réussite
 7. **Redémarrer** le poste
 
-![Jonction au domaine](images/image15.png)
+![Message de bienvenue confirmant la jonction au domaine](images/image12.png)
 
 ---
 
@@ -262,15 +250,37 @@ Effectuer un `ping 192.168.10.10` depuis le client pour valider la communication
 
 ### Connexion avec un compte domaine
 
-Au redémarrage du client, l'option **Autre utilisateur** permet de s'authentifier avec le compte domaine d'un employé (ex : `TECHNOLAB\amartin`).
+Au redémarrage du client, l'option **Autre utilisateur** permet de s'authentifier avec le compte domaine d'un employé, par exemple : `TECHNOLAB\amartin`.
+
+![Connexion avec un compte domaine](images/image13.png)
+
+![Changement de mot de passe à la première connexion](images/image14.png)
 
 ### Commandes de validation
+
+Exécuter les commandes suivantes pour valider le bon fonctionnement :
 
 ```batch
 whoami
 nslookup technolab.local
 net view
 ```
+
+![Commande whoami — vérification du compte domaine](images/image15.png)
+
+![Commande nslookup — résolution DNS du domaine](images/image16.png)
+
+![Commande net view — liste des ressources du domaine](images/image17.png)
+
+### Vérification dans l'Active Directory
+
+Le poste client apparaît bien visible dans la console d'administration Active Directory.
+
+![Poste client visible dans l'Active Directory](images/image18.png)
+
+![Poste visible dans la console Active Directory](images/image19.png)
+
+### Récapitulatif des commandes
 
 | Commande | Rôle |
 |---|---|
@@ -279,10 +289,6 @@ net view
 | `nslookup technolab.local` | Résoudre le nom de domaine via DNS |
 | `whoami` | Vérifier que l'utilisateur est bien un compte domaine |
 | `net view` | Lister les ressources partagées visibles sur le domaine |
-
-### Vérification dans l'Active Directory
-
-Le poste client apparaît bien dans l'OU **Postes** de la console d'administration.
 
 ---
 
