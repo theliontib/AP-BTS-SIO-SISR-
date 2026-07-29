@@ -69,7 +69,7 @@ L'infrastructure est isolée au sein d'un sous-réseau privé unique de classe C
 | **Contrôleur de Domaine** | Windows Server 2022 | 192.168.10.10 | Administrateur / `Serveur2022` |
 | **Poste Client Standard** | Windows 10 Pro | 192.168.10.20 | amartin / `Azerty01*` |
 | **Serveur Application (GLPI)** | Ubuntu Server (Docker) | 192.168.10.30 | administrateur / `Serveur2022` |
-| **Serveur de Stockage (NAS)** | TrueNAS | 192.168.10.40 | administrateur / `Serveur@)@@` |
+| **Serveur de Stockage (NAS)** | TrueNAS | 192.168.10.40 | truenas_admin / `Serveur@)@@` |
 
 ### 4.2 Règle d'Imputation des Comptes Utilisateurs
 Pour l'ensemble de la population de l'annuaire, la convention de nommage standardisée adoptée est le format suivant : 
